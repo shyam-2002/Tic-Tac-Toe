@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 char player_one_char,player_two_char;
 int count=1;
 int user_index,game_over = 0;
@@ -39,8 +40,9 @@ printf("%d | %d | %d\n_________\n%d | %d | %d\n_________\n%d | %d | %d\n",1,2,3,
 scanf("%d",&player_input_index);
 *(&input_arr[0][0]+player_input_index-1) = (count%2 ==0)?player_two_char:player_one_char;
  game_over = check_game_status();
- printf("%c ",winning_char);
+ //printf("%c ",winning_char);
  count++;
+ system("clear");
   }
 if(winning_char == player_one_char){
  printf("Player 1 is winner");}
@@ -71,7 +73,7 @@ else printf("Welcome back\n");
 }
 
 int main(){
-
+ system("clear");
  int gaming_count = 0;
  greet(gaming_count);
  gaming_setup();
