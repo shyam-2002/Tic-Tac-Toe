@@ -32,13 +32,15 @@ return 0;
 
 }
 void scan_and_print(){
+char arr[9] = {'1','2','3','4','5','6','7','8','9'};
 int player_input_index;
 while(game_over != 1){
 printf("Choose the index from below where you want to put %c\n",(count%2 == 0)?player_two_char:player_one_char);
 
-printf("%d | %d | %d\n_________\n%d | %d | %d\n_________\n%d | %d | %d\n",1,2,3,4,5,6,7,8,9);
+printf("%c | %c | %c\n_________\n%c | %c | %c\n_________\n%c | %c | %c\n",arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8]);
 scanf("%d",&player_input_index);
 *(&input_arr[0][0]+player_input_index-1) = (count%2 ==0)?player_two_char:player_one_char;
+arr[player_input_index-1] = (count%2==0)?player_two_char:player_one_char;
  game_over = check_game_status();
  //printf("%c ",winning_char);
  count++;
