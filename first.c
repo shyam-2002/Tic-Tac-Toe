@@ -5,25 +5,25 @@ int user_index,game_over = 0;
 char input_arr[3][3];
 char winning_char ;
 int check_game_status(){
-if(count <=10){
+if(count <=9){
 for(int i=0;i<3;i++){
-  if(input_arr[i][0] == input_arr[i][1] && input_arr[i][1]== input_arr[i][2] ){
+  if((input_arr[i][0] == 'o' || input_arr[i][0] == 'x') &&input_arr[i][0] == input_arr[i][1] && input_arr[i][1]== input_arr[i][2] ){
     winning_char = input_arr[i][0];
     return 1;}
   }
 for(int j=0;j<3;j++){
-if(input_arr[0][j] == input_arr[1][j] && input_arr[1][j]== input_arr[2][j] ){
+if((input_arr[0][j] == 'o' || input_arr[0][j] == 'x') && input_arr[0][j] == input_arr[1][j] && input_arr[1][j]== input_arr[2][j] ){
     winning_char = input_arr[0][j];
     return 1;
   }  
  } 
-if(input_arr[0][0] == input_arr[1][1] && input_arr[1][1] == input_arr[2][2]){
+if((input_arr[0][0] == 'o' || input_arr[0][0] == 'x') && input_arr[0][0] == input_arr[1][1] && input_arr[1][1] == input_arr[2][2]){
   winning_char = input_arr[0][0];
   return 1;}
-if(input_arr[0][2] == input_arr[1][1] && input_arr[1][1] == input_arr[2][0]){
+if((input_arr[1][1] == 'o' || input_arr[1][1] == 'x') && input_arr[0][2] == input_arr[1][1] && input_arr[1][1] == input_arr[2][0]){
   winning_char = input_arr[1][1];
   return 1;}
-if(count == 10){
+if(count == 9){
 winning_char = 'd';
 return 1;}
 return 0;   
@@ -39,6 +39,7 @@ printf("%d | %d | %d\n_________\n%d | %d | %d\n_________\n%d | %d | %d\n",1,2,3,
 scanf("%d",&player_input_index);
 *(&input_arr[0][0]+player_input_index-1) = (count%2 ==0)?player_two_char:player_one_char;
  game_over = check_game_status();
+ printf("%c ",winning_char);
  count++;
   }
 if(winning_char == player_one_char){
