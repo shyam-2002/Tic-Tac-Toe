@@ -20,7 +20,7 @@ if(input_arr[0][j] == input_arr[1][j] && input_arr[1][j]== input_arr[2][j] ){
 if(input_arr[0][0] == input_arr[1][1] && input_arr[1][1] == input_arr[2][2]){
   winning_char = input_arr[0][0];
   return 1;}
-if(input_arr[2][2] == input_arr[1][1] && input_arr[1][1] == input_arr[2][2]){
+if(input_arr[0][2] == input_arr[1][1] && input_arr[1][1] == input_arr[2][0]){
   winning_char = input_arr[1][1];
   return 1;}
 if(count == 10){
@@ -31,25 +31,25 @@ return 0;
 
 }
 void scan_and_print(){
-
+int player_input_index;
 while(game_over != 1){
-printf("Choose the index from below where you want to put %c",(count%2 == 0)?player_two_char:player_one_char);
+printf("Choose the index from below where you want to put %c\n",(count%2 == 0)?player_two_char:player_one_char);
 
-printf("%d | %d | %d\n_________\n%d | %d | %d\n_________\n%d | %d | %d",1,2,3,4,5,6,7,8,9);
+printf("%d | %d | %d\n_________\n%d | %d | %d\n_________\n%d | %d | %d\n",1,2,3,4,5,6,7,8,9);
 scanf("%d",&player_input_index);
-*(input_arr+player_input_index-1) = (count%2 ==0)?player_two_char:player_one_char;
+*(&input_arr[0][0]+player_input_index-1) = (count%2 ==0)?player_two_char:player_one_char;
  game_over = check_game_status();
- 
+ count++;
   }
 if(winning_char == player_one_char){
  printf("Player 1 is winner");}
-else if(winning_char = player_two_char){
+else if(winning_char == player_two_char){
  printf("Player 2 is winner");}
 else printf("Match is drawn");    
 }
 void gaming_setup(){
 
-printf("Player 1 :(enter one of either o or x)");
+printf("Player 1 :(enter one of either o or x)\n");
 scanf("%c",&player_one_char);
 if(player_one_char == 'o'){
 player_two_char = 'x';
@@ -70,8 +70,10 @@ else printf("Welcome back\n");
 }
 
 int main(){
-int gaming_count = 0;
-greet(gaming_count);
-gaming_setup();
+
+ int gaming_count = 0;
+ greet(gaming_count);
+ gaming_setup();
+ scan_and_print();
 
 }
