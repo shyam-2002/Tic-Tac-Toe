@@ -60,10 +60,6 @@ if(player_one_char == 'o'){
 player_two_char = 'x';
 }
 else player_two_char = 'o';
-
-
-
-
 }
 
 void greet(int gaming_count){
